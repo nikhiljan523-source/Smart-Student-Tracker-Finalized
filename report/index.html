@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report a Problem</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    
+
+    <h2>
+        Report a Problem
+        <span>Please fill the details below</span>
+    </h2>
+
+    <div class="box">
+
+        <div class="form-row">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-row">
+            <label for="course">Course:</label>
+            <input type="text" id="course" placeholder="Enter your course" required>
+        </div>
+
+        <div class="form-row">
+            <label for="issue">Short Issue:</label>
+            <textarea id="issue" placeholder="Short issue summary" required></textarea>
+        </div>
+
+    </div>
+
+  
+    <div class="box">
+
+        <h3 class="section-title">Detailed Problem Submission</h3>
+
+        <div class="form-row">
+            <label for="category">Problem Category:</label>
+            <select id="category" required>
+                <option value="Bug">Bug</option>
+                <option value="UI Issue">UI Issue</option>
+                <option value="Performance Issue">Performance Issue</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="problemDesc">Problem Description:</label>
+            <textarea id="problemDesc" placeholder="Explain your problem in detail..." required></textarea>
+        </div>
+
+        <div class="form-row">
+            <label for="steps">Steps to Resolve:</label>
+            <textarea id="steps" placeholder="Write steps to resolve the issue..."></textarea>
+        </div>
+
+        <div class="form-row">
+            <label for="problemScreenshot">Upload Screenshot:</label>
+            <input type="file" id="problemScreenshot" accept="image/*">
+        </div>
+
+    </div>
+
+  
+    <div class="box">
+
+        <div class="rating-row">
+            <div class="rating-title">Severity</div>
+            <div class="stars" data-category="severity">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+        </div>
+
+        <div class="rating-row">
+            <div class="rating-title">Impact</div>
+            <div class="stars" data-category="impact">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+        </div>
+
+        <div class="rating-row">
+            <div class="rating-title">Urgency</div>
+            <div class="stars" data-category="urgency">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="submit-btn">
+            <button onclick="submitReport()">Submit</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
 
