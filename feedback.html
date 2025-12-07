@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Feedback FORM</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .wrapper {
+      width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border: 2px solid #000;
+      padding: 20px 30px 30px;
+    }
+
+    .page-title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 22px;
+      padding: 10px 0 20px;
+      border-bottom: 2px solid #000;
+      margin-bottom: 20px;
+    }
+
+    .info-box {
+      border: 2px solid #000;
+      padding: 15px 20px;
+      margin-bottom: 25px;
+    }
+
+    .info-row {
+      margin-bottom: 10px;
+    }
+
+    .info-row label {
+      display: inline-block;
+      width: 70px;
+      font-weight: bold;
+    }
+
+    .info-row input {
+      width: 60%;
+      padding: 5px 8px;
+      border: 1px solid #000;
+      border-radius: 3px;
+    }
+
+    .rating-section {
+      border: 2px solid #000;
+      padding: 20px;
+    }
+
+    .rating-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      grid-row-gap: 18px;
+      align-items: center;
+    }
+
+    .rating-label-text {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* STAR RATING */
+    .rating {
+      display: inline-flex;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+    }
+
+    .rating input {
+      display: none;
+    }
+
+    .rating label {
+      font-size: 28px;
+      cursor: pointer;
+      padding: 0 4px;
+      transition: transform 0.1s;
+    }
+
+    .rating label:hover,
+    .rating label:hover ~ label {
+      color: gold;
+      transform: scale(1.1);
+    }
+
+    .rating input:checked ~ label {
+      color: gold;
+    }
+
+    .bottom-row {
+      border-top: 2px solid #000;
+      margin-top: 25px;
+      padding-top: 15px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    button[type="submit"] {
+      padding: 10px 28px;
+      font-weight: bold;
+      border: 2px solid #000;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    @media (max-width: 700px) {
+      .wrapper {
+        width: 100%;
+        margin: 0;
+        border: none;
+      }
+      .rating-grid {
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="page-title">PLEASE GIVE YOUR<font color="red"> FEEDBACK</font></div>
+
+    <form id="feedbackForm">
+      <!-- NAME & COURSE -->
+      <div class="info-box">
+        <div class="info-row">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="info-row">
+          <label for="course">Course:</label>
+          <input type="text" id="course" name="course" required />
+        </div>
+      </div>
+
+      <!-- RATINGS -->
+      <div class="rating-section">
+        <div class="rating-grid">
+          <!-- UI DESIGN -->
+          <div class="rating-label-text">UI DESIGN</div>
+          <div class="rating">
+            <input type="radio" id="ui-5" name="ui_design" value="5" required />
+            <label for="ui-5">&#9733;</label>
+            <input type="radio" id="ui-4" name="ui_design" value="4" />
+            <label for="ui-4">&#9733;</label>
+            <input type="radio" id="ui-3" name="ui_design" value="3" />
+            <label for="ui-3">&#9733;</label>
+            <input type="radio" id="ui-2" name="ui_design" value="2" />
+            <label for="ui-2">&#9733;</label>
+            <input type="radio" id="ui-1" name="ui_design" value="1" />
+            <label for="ui-1">&#9733;</label>
+          </div>
+
+          <!-- FEATURES -->
+          <div class="rating-label-text">FEATURES</div>
+          <div class="rating">
+            <input type="radio" id="feat-5" name="features" value="5" required />
+            <label for="feat-5">&#9733;</label>
+            <input type="radio" id="feat-4" name="features" value="4" />
+            <label for="feat-4">&#9733;</label>
+            <input type="radio" id="feat-3" name="features" value="3" />
+            <label for="feat-3">&#9733;</label>
+            <input type="radio" id="feat-2" name="features" value="2" />
+            <label for="feat-2">&#9733;</label>
+            <input type="radio" id="feat-1" name="features" value="1" />
+            <label for="feat-1">&#9733;</label>
+          </div>
+
+          <!-- EASY TO USE -->
+          <div class="rating-label-text">EASY TO USE</div>
+          <div class="rating">
+            <input type="radio" id="easy-5" name="easy_to_use" value="5" required />
+            <label for="easy-5">&#9733;</label>
+            <input type="radio" id="easy-4" name="easy_to_use" value="4" />
+            <label for="easy-4">&#9733;</label>
+            <input type="radio" id="easy-3" name="easy_to_use" value="3" />
+            <label for="easy-3">&#9733;</label>
+            <input type="radio" id="easy-2" name="easy_to_use" value="2" />
+            <label for="easy-2">&#9733;</label>
+            <input type="radio" id="easy-1" name="easy_to_use" value="1" />
+            <label for="easy-1">&#9733;</label>
+          </div>
+
+          <!-- OVERALL RATING -->
+          <div class="rating-label-text">OVERALL RATING</div>
+          <div class="rating">
+            <input type="radio" id="overall-5" name="overall" value="5" required />
+            <label for="overall-5">&#9733;</label>
+            <input type="radio" id="overall-4" name="overall" value="4" />
+            <label for="overall-4">&#9733;</label>
+            <input type="radio" id="overall-3" name="overall" value="3" />
+            <label for="overall-3">&#9733;</label>
+            <input type="radio" id="overall-2" name="overall" value="2" />
+            <label for="overall-2">&#9733;</label>
+            <input type="radio" id="overall-1" name="overall" value="1" />
+            <label for="overall-1">&#9733;</label>
+          </div>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <div class="bottom-row">
+          <button type="submit">SUBMIT</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Simple submit handler (no backend yet)
+    document.getElementById("feedbackForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // remove this line later if you add backend "action"
+      alert("Thank you for your feedback!");
+      this.reset();
+    });
+  </script>
+</body>
+</html>

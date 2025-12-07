@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Smart Student Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="login-page">
+
+    <div class="login-wrapper">
+
+        <div class="login-box">
+            <img src="logo.png" class="login-logo" />
+
+            <h2>Smart Student Tracker</h2>
+
+            <form id="loginForm">
+
+                <label for="type">Select Role</label>
+                <select id="type" required>
+                    <option value="student">Student</option>
+                    <option value="professor">Professor</option>
+                </select>
+
+                <label for="uid">UID / Name</label>
+                <input type="text" id="uid" placeholder="Enter UID or Name" />
+
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" />
+
+                <button type="submit">Login</button>
+
+                <div id="errorMsg" class="error-msg">Invalid credentials! Try again.</div>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        const students = {
+            "25LBCS1321": { name: "Nikhil Surya", pass: "1321" },
+            "25LBCS1118": { name: "Prince Sharma", pass: "1118" },
+            "25LBCS1114": { name: "Gilson Kumar Brahma", pass: "1114" },
+            "25LBCS1135": { name: "Abhishek Kumar", pass: "1135" },
+            "25LBCS1144": { name: "Abhishek Singh", pass: "1144" },
+            "25LBCS1104": { name: "Adarsh Mishra", pass: "1104" }
+        };
+
+        const typeSelect = document.getElementById("type");
+        const uidField = document.getElementById("uid");
+
+        // AUTO-FILL PROFESSOR NAME
+        typeSelect.addEventListener("change", () => {
+            if (typeSelect.value === "professor") {
+                uidField.value = "Dr. Ravi Sharma";
+                uidField.readOnly = true;
+            } else {
+                uidField.value = "";
+                uidField.readOnly = false;
+            }
+        });
+
+        const loginForm = document.getElementById("loginForm");
+        const errorMsg = document.getElementById("errorMsg");
+
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const role = typeSelect.value;
+            const uid = uidField.value.trim();
+            const pass = document.getElementById("password").value.trim();
+
+            let valid = false;
+            let user = {};
+
+            if (role === "professor") {
+                if (pass === "admin") {
+                    valid = true;
+                    user = { name: "Dr. Ravi Sharma", type: "professor" };
+                }
+            } else {
+                if (students[uid] && students[uid].pass === pass) {
+                    valid = true;
+                    user = { name: students[uid].name, uid, type: "student" };
+                }
+            }
+
+            if (valid) {
+                localStorage.setItem("sst_user", JSON.stringify(user));
+                window.location.href = "index.html";
+            } else {
+                errorMsg.style.display = "block";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

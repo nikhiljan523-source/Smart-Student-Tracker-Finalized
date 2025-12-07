@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Student Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="logo.png" class="brand-logo">
+        <div class="brand-title"><h1>Smart Student Tracker</h1></div>
+      </div>
+
+      <nav>
+        <button class="nav-item active" data-view="dashboard">Dashboard</button>
+        <button class="nav-item" data-view="courses">Courses</button>
+        <button class="nav-item" data-view="tasks">Tasks</button>
+        <button class="nav-item" data-view="calendar">Calendar</button>
+        <button class="nav-item" data-view="settings">Settings</button>
+
+        <button class="nav-item" data-view="feedback">Feedback</button>
+        <button class="nav-item" data-view="report">Report</button> <!-- ADDED -->
+        
+        <button class="nav-item" data-view="about">About Us</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="search"><input id="globalSearch" placeholder="Search courses, tasks..." /></div>
+        <div class="profile">
+          <div class="user">
+            <div class="avatar" id="profileAvatar">U</div>
+            <div class="meta">
+              <strong id="userName">User</strong>
+              <small id="userRole">Role</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard -->
+      <section id="view-dashboard" class="view">
+        <h2>Dashboard</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>My Courses</h3>
+            <div class="course-tiles" id="dashboardCourses"></div>
+          </div>
+
+          <div class="card">
+            <h3>Homework Progress</h3>
+            <div id="progressList"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Courses -->
+      <section id="view-courses" class="view hidden">
+        <h2>Courses</h2>
+        <div class="panel">
+          <div class="left">
+            <form id="courseForm">
+              <h3>Add / Edit Course</h3>
+              <input id="courseName" placeholder="Course name" required />
+              <input id="courseLessons" type="number" placeholder="Lessons" />
+              <select id="courseLevel">
+                <option>Elementary</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+              </select>
+              <div class="form-actions">
+                <button type="submit">Save</button>
+                <button id="cancelCourse" type="button" class="secondary">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="right">
+            <h3>All Courses</h3>
+            <div id="coursesGrid" class="courses-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tasks -->
+      <section id="view-tasks" class="view hidden">
+        <h2>Tasks</h2>
+
+        <div class="panel">
+          <div class="left">
+            <form id="taskForm">
+              <h3>Add Task</h3>
+              <input id="taskTitle" placeholder="Task title" required />
+              <select id="taskCourse"></select>
+              <input id="taskDue" type="date" />
+              <div class="form-actions"><button type="submit">Add</button></div>
+            </form>
+          </div>
+
+          <div class="right">
+            <h3>Your Tasks</h3>
+            <div id="tasksList"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Calendar -->
+      <section id="view-calendar" class="view hidden">
+        <h2>Calendar</h2>
+        <div class="calendar-shell">
+          <div class="calendar-header">
+            <div>
+              <button id="calPrev" class="cal-btn">◀</button>
+              <button id="calToday" class="cal-btn secondary">Today</button>
+              <button id="calNext" class="cal-btn">▶</button>
+            </div>
+            <div id="calendarTitle" class="calendar-title"></div>
+          </div>
+
+          <div id="monthGrid" class="month-grid"></div>
+        </div>
+
+        <div id="datePanel" class="date-panel hidden">
+          <div class="dp-header">
+            <strong id="dpDateLabel"></strong>
+            <button id="closeDp" class="cal-btn">✕</button>
+          </div>
+
+          <div id="dpEvents" class="dp-events"></div>
+
+          <form id="dpAddForm" class="dp-add">
+            <input id="dpTitle" placeholder="Event title" required />
+            <select id="dpCourseSelect"></select>
+
+            <div class="form-actions">
+              <button type="submit">Add</button>
+              <button id="dpCancel" type="button" class="secondary">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section id="view-settings" class="view hidden">
+        <h2>Settings</h2>
+        <button id="resetData">Reset Data</button>
+        <button id="logoutBtn" class="secondary">Logout</button>
+      </section>
+
+      <!-- Feedback -->
+      <section id="view-feedback" class="view hidden">
+        <h2>Feedback</h2>
+        <iframe src="feedback.html" class="feedback-frame"></iframe>
+      </section>
+
+      <!-- Report (ADDED) -->
+      <section id="view-report" class="view hidden">
+        <h2>Report</h2>
+        <iframe src="report/index.html" class="feedback-frame"></iframe>
+      </section>
+
+      <!-- About Us -->
+      <section id="view-about" class="view hidden">
+        <h2>About Us</h2>
+
+        <div class="about-grid">
+          <div class="about-card"><h3>Nikhil Surya</h3><p>UID: 25LBCS1321</p></div>
+          <div class="about-card"><h3>Prince Sharma</h3><p>UID: 25LBCS1118</p></div>
+          <div class="about-card"><h3>Gilson Kumar Brahma</h3><p>UID: 25LBCS1114</p></div>
+          <div class="about-card"><h3>Abhishek Kumar</h3><p>UID: 25LBCS1135</p></div>
+          <div class="about-card"><h3>Abhishek Singh</h3><p>UID: 25LBCS1144</p></div>
+          <div class="about-card"><h3>Adarsh Mishra</h3><p>UID: 25LBCS1104</p></div>
+        </div>
+
+        <div class="about-guide">
+          Project Guide: <strong>Dr. Ravi Sharma</strong>
+        </div>
+      </section>
+
+      <footer class="footer"><small>Smart Student Tracker — B.Tech CSE</small></footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
